@@ -70,4 +70,19 @@ jobs:
         shell: pwsh
         run: |
          ${{ github.workspace }}\scripts\UiPathDeploy.ps1 ${{ github.workspace }}\package ${{env.ORCH_URL}} ${{env.ORCH_TENANT}} -UserKey ${{env.ORCH_USER_KEY}} -account_name ${{env.ORCH_ACC_NAME}} -folder_organization_unit ${{env.ORCH_FOLDER}} -cli_url ${{env.CLI_URL}}
-          
+
+                 
+ # Create Pull Request for Merge & Review
+  create-pull-request:
+    needs: publish-uipath-nuget-package
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out repository code
+        uses: actions/checkout@v2
+      - name: pull-request
+        uses: repo-sync/pull-request@v2
+        with:
+          destination_branch: "main"
+          github_token: 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
+          pr_label: "feature, automated pr"
+          pr_title: "Pull Request From Github Action"
