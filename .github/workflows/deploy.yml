@@ -86,4 +86,4 @@ jobs:
           pr_reviewer: aswinbhaskaraash
           github_token: ${{ secrets.sGITHUB_TOKEN }}
           pr_label: "feature, automated pr"
-          pr_title: "Pull Request From Github Action"
+          pr_title: "Pull Request From Github Actionsss"
