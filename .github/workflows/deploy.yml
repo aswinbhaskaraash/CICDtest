@@ -83,6 +83,7 @@ jobs:
         uses: repo-sync/pull-request@v2
         with:
           destination_branch: "main"
+          team-reviewers: Team1
           github_token: ${{ secrets.sGITHUB_TOKEN }}
           pr_label: "feature, automated pr"
           pr_title: "Pull Request From Github Action"
