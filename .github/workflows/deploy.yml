@@ -83,6 +83,6 @@ jobs:
         uses: repo-sync/pull-request@v2
         with:
           destination_branch: "main"
-          github_token: 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
+          github_token: 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
           pr_label: "feature, automated pr"
           pr_title: "Pull Request From Github Action"
