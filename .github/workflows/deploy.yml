@@ -5,7 +5,7 @@ on:
     branches:
       - dev/CICDtest
 
-# Here the environment variable is declared in workflow level
+# Here the environment variable is declared in workflow level-
 env:
   # Replace with your Orchestrator Values 
   PROJECT_NAME: CICDtest                         
