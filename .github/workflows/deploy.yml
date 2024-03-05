@@ -8,11 +8,11 @@ on:
 # Here the environment variable is declared in workflow level
 env:
   # Replace with your Orchestrator Values 
-  ORCH_URL: https://cloud.uipath.com/aswinsorganization
+  ORCH_URL: https://cloud.uipath.com
   ORCH_TENANT: DefaultTenant
   ORCH_CLIENT_ID: fe493284-81e5-4811-88c4-7477c30d516d
   ORCH_USER_KEY: hoqOOE9stVgo_e!#
-  ORCH_ACC_NAME: GH_Studio_CICD
+  ORCH_ACC_NAME: aswinsorganization
 
 jobs:
   print-details:
@@ -55,7 +55,9 @@ jobs:
         uses: actions/upload-artifact@v2
         with:
           name: Artifacts
-          path: pathforpkg
+          path:  |
+           package/*.*
+           scripts/*.ps1
   publish-uipath-nuget-package-Dev:
     needs: build-uipath-nuget-package
     runs-on: windows-latest
@@ -68,4 +70,4 @@ jobs:
       - name: Publish Nuget Package to DEV
         shell: pwsh
         run: |
-         ${{ github.workspace }}\scripts\UiPathDeploy.ps1 ${{ github.workspace }}\pathforpkg ${{env.ORCH_URL}} ${{env.ORCH_TENANT}} -accountForApp ${{env.ORCH_ACC_NAME}} -applicationId ${{env.ORCH_CLIENT_ID}}  -applicationSecret ${{env.ORCH_USER_KEY}}  -applicationscope "OR.Assets OR.BackgroundTasks OR.Execution OR.Folders OR.Jobs OR.Machines OR.Monitoring OR.Robots OR.Settings OR.TestSetExecutions OR.TestSets OR.TestSetSchedules OR.Users" -folder_organization_unit "CICDdev"
+         ${{ github.workspace }}\scripts\UiPathDeploy.ps1 ${{ github.workspace }}\package\*.nupkg ${{env.ORCH_URL}} ${{env.ORCH_TENANT}} -accountForApp ${{env.ORCH_ACC_NAME}} -applicationId ${{env.ORCH_CLIENT_ID}}  -applicationSecret ${{env.ORCH_USER_KEY}}  -applicationscope "OR.Assets OR.BackgroundTasks OR.Execution OR.Folders OR.Jobs OR.Machines OR.Monitoring OR.Robots OR.Settings OR.TestSetExecutions OR.TestSets OR.TestSetSchedules OR.Users" -folder_organization_unit "CICDdev"
