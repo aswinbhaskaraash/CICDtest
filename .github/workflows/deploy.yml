@@ -1,4 +1,4 @@
-name: Development test 2 workflow
+name: Development test workflow
 
 on:
   push:
