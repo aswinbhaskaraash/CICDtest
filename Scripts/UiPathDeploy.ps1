@@ -127,7 +127,7 @@ if (-not(Test-Path -Path $uipathCLI -PathType Leaf)) {
             New-Item -Path "$scriptPath\uipathcli\$cliVersion" -ItemType "directory" -Force | Out-Null
         }
         #Download UiPath CLI
-        Invoke-WebRequest "https://uipath.pkgs.visualstudio.com/Public.Feeds/_apis/packaging/feeds/1c781268-d43d-45ab-9dfc-0151a1c740b7/nuget/packages/UiPath.CLI.Windows/versions/23.6.8581.19168/content" -OutFile "$scriptPath\\uipathcli\\$cliVersion\\cli.zip";
+        Invoke-WebRequest "https://uipath.pkgs.visualstudio.com/Public.Feeds/_apis/packaging/feeds/1c781268-d43d-45ab-9dfc-0151a1c740b7/nuget/packages/UiPath.CLI.Windows/versions/$cliVersion" -OutFile "$scriptPath\\uipathcli\\$cliVersion\\cli.zip";
         Expand-Archive -LiteralPath "$scriptPath\\uipathcli\\$cliVersion\\cli.zip" -DestinationPath "$scriptPath\\uipathcli\\$cliVersion";
         WriteLog "UiPath CLI is downloaded and extracted in folder $scriptPath\uipathcli\\$cliVersion"
         if (-not(Test-Path -Path $uipathCLI -PathType Leaf)) {
