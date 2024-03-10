@@ -109,7 +109,7 @@ if (-not(Test-Path -Path $uipathCLI -PathType Leaf)) {
     WriteLog "UiPath CLI does not exist in this folder. Attempting to download it..."
     try {
         New-Item -Path "$scriptPath" -ItemType "directory" -Name "uipathcli";
-        Invoke-WebRequest "https://uipath.visualstudio.com/Public.Feeds/_artifacts/feed/UiPath-Official/NuGet/UiPath.CLI.Windows/overview/23.10.8753.32995" -OutFile "$scriptPath\\uipathcli\\cli.zip";
+        Invoke-WebRequest $cli_url -OutFile "$scriptPath\\uipathcli\\cli.zip";
         Expand-Archive -LiteralPath "$scriptPath\\uipathcli\\cli.zip" -DestinationPath "$scriptPath\\uipathcli";
         WriteLog "UiPath CLI is downloaded and extracted in folder $scriptPath\\uipathcli"
         if (-not(Test-Path -Path $uipathCLI -PathType Leaf)) {
