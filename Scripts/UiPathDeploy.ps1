@@ -50,25 +50,18 @@ Examples:
 Param (
 
     #Required
-	[string] $packages_path = "", # Required. The path to a folder containing packages, or to a package file.
-	[string] $orchestrator_url = "", #Required. The URL of the Orchestrator instance.
-	[string] $orchestrator_tenant = "", #Required. The tenant of the Orchestrator instance.
-
-    #cloud - Required
+    [string] $packages_path = "", # Required. The path to a folder containing packages, or to a package file.
+    [string] $orchestrator_url = "", #Required. The URL of the Orchestrator instance.
+    [string] $orchestrator_tenant = "", #Required. The tenant of the Orchestrator instance.
     [string] $account_name = "", #Required. The Orchestrator CloudRPA account name. Must be used together with the refresh token and client id.
-	[string] $UserKey = "", #Required. The Orchestrator OAuth2 refresh token used for authentication. Must be used together with the account name and client id.
-    
-    #On prem - Required
-    [string] $orchestrator_user = "", #Required. The Orchestrator username used for authentication. Must be used together with the password.
-	[string] $orchestrator_pass = "", #Required. The Orchestrator password used for authentication. Must be used together with the username
-	
-	[string] $folder_organization_unit = "", #The Orchestrator folder (organization unit).
-	[string] $language = "", #The orchestrator language.  
+    [string] $UserKey = "", #Required. The Orchestrator OAuth2 refresh token used for authentication. Must be used together with the account name and client id.
+    [string] $UserSecret = "", #Required. The Orchestrator OAuth2 refresh token used for authentication. Must be used together with the account name and client id.
+    [string] $applicationscope = "", #Required. The Orchestrator OAuth2 refresh token used for authentication. Must be used together with the account name and client id.
+    [string] $folder_organization_unit = "", #The Orchestrator folder (organization unit).
+    [string] $language = "", #The orchestrator language.  
     [string] $environment_list = "", #The comma-separated list of environments to deploy the package to. If the environment does not belong to the default folder (organization unit) it must be prefixed with the folder name, e.g. AccountingTeam\TestEnvironment
     [string] $disableTelemetry = "", #Disable telemetry data.
     [string] $cli_url = "" #url to downlaod uiapth cli
-    
-    
 
 )
 function WriteLog
@@ -137,26 +130,24 @@ $ParamList.Add($orchestrator_url)
 $ParamList.Add($orchestrator_tenant)
 
 if($account_name -ne ""){
-    $ParamList.Add("-a")
+    $ParamList.Add("-A")
     $ParamList.Add($account_name)
 }
-if($UserKey -ne ""){
-    $ParamList.Add("-t")
-    $ParamList.Add($UserKey)
 
-}
-if($orchestrator_user -ne ""){
-    $ParamList.Add("-u")
-    $ParamList.Add($orchestrator_user)
-}
-if($orchestrator_pass -ne ""){
-    $ParamList.Add("-p")
-    $ParamList.Add($orchestrator_pass)
-}
 if($folder_organization_unit -ne ""){
     $ParamList.Add("-o")
     $ParamList.Add($folder_organization_unit)
 }
+if($UserKey -ne ""){
+    $ParamList.Add("-I")
+    $ParamList.Add($environment_list)
+}
+
+if($UserSecret -ne ""){
+    $ParamList.Add("-S")
+    $ParamList.Add($environment_list)
+}
+
 if($environment_list -ne ""){
     $ParamList.Add("-e")
     $ParamList.Add($environment_list)
