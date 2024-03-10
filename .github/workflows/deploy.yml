@@ -13,6 +13,8 @@ env:
   ORCH_CLIENT_ID: fe493284-81e5-4811-88c4-7477c30d516d
   ORCH_USER_KEY: hoqOOE9stVgo_e!#
   ORCH_ACC_NAME: aswinsorganization
+  CLI_URL: https://uipath.pkgs.visualstudio.com/Public.Feeds/_packaging/UiPath-Official/
+nuget/v3/flat2/UiPath.CLI.Windows/22.10.8438.32859/UiPath.CLI.Windows.22.10.8438.32859.nupkg
 
 jobs:
   print-details:
@@ -70,4 +72,4 @@ jobs:
       - name: Publish Nuget Package to DEV
         shell: pwsh
         run: |
-         ${{ github.workspace }}\scripts\UiPathDeploy.ps1 ${{ github.workspace }}\package ${{env.ORCH_URL}} ${{env.ORCH_TENANT}} -accountForApp ${{env.ORCH_ACC_NAME}} -applicationId ${{env.ORCH_CLIENT_ID}}  -applicationSecret ${{env.ORCH_USER_KEY}}  -applicationscope "OR.Assets OR.BackgroundTasks OR.Execution OR.Folders OR.Jobs OR.Machines OR.Monitoring OR.Robots OR.Settings OR.TestSetExecutions OR.TestSets OR.TestSetSchedules OR.Users" -folder_organization_unit "CICDdev"
+         ${{ github.workspace }}\scripts\UiPathDeploy.ps1 ${{ github.workspace }}\package ${{env.ORCH_URL}} ${{env.ORCH_TENANT}} -accountForApp ${{env.ORCH_ACC_NAME}} -applicationId ${{env.ORCH_CLIENT_ID}}  -applicationSecret ${{env.ORCH_USER_KEY}}  -applicationscope "OR.Assets OR.BackgroundTasks OR.Execution OR.Folders OR.Jobs OR.Machines OR.Monitoring OR.Robots OR.Settings OR.TestSetExecutions OR.TestSets OR.TestSetSchedules OR.Users" -folder_organization_unit "CICDdev" -cli_url ${{env.CLI_URL}}
