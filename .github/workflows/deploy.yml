@@ -51,7 +51,7 @@ jobs:
         uses: actions/checkout@v2
       - name: Build Nuget Package
         shell: pwsh
-        run:  ${{ github.workspace }}\scripts\UiPathPack.ps1 ${{ github.workspace }}\project.json -destination_folder ${{ github.workspace }}\package -autoVersion
+        run:  ${{ github.workspace }}\scripts\UiPathPack.ps1 ${{ github.workspace }}\project.json -destination_folder ${{ github.workspace }}\package -autoVersion -cli_url ${{env.CLI_URL}}
       - name: Upload UiPath Artifacts
         uses: actions/upload-artifact@v2
         with:
