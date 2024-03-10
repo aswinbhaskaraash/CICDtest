@@ -71,4 +71,4 @@ jobs:
       - name: Publish Nuget Package to DEV
         shell: pwsh
         run: |
-         ${{ github.workspace }}\scripts\UiPathDeploy.ps1 ${{ github.workspace }}\package ${{env.ORCH_URL}} ${{env.ORCH_TENANT}} -accountForApp ${{env.ORCH_ACC_NAME}} -applicationId ${{env.ORCH_CLIENT_ID}}  -applicationSecret ${{env.ORCH_USER_KEY}}  -applicationscope "OR.Assets OR.BackgroundTasks OR.Execution OR.Folders OR.Jobs OR.Machines OR.Monitoring OR.Robots OR.Settings OR.TestSetExecutions OR.TestSets OR.TestSetSchedules OR.Users" -folder_organization_unit "CICDdev" -cli_url ${{env.CLI_URL}}
+         ${{ github.workspace }}\scripts\UiPathDeploy.ps1 -packages_path ${{ github.workspace }}\package -orchestrator_url ${{env.ORCH_URL}} -orchestrator_tenant ${{env.ORCH_TENANT}} -account_name ${{env.ORCH_ACC_NAME}} -UserKey ${{env.ORCH_CLIENT_ID}}  -UserSecret ${{env.ORCH_USER_KEY}}  -applicationscope "OR.Assets OR.BackgroundTasks OR.Execution OR.Folders OR.Jobs OR.Machines OR.Monitoring OR.Robots OR.Settings OR.TestSetExecutions OR.TestSets OR.TestSetSchedules OR.Users" -folder_organization_unit "CICDdev" -cli_url ${{env.CLI_URL}}
