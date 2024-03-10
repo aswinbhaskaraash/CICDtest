@@ -13,8 +13,7 @@ env:
   ORCH_CLIENT_ID: fe493284-81e5-4811-88c4-7477c30d516d
   ORCH_USER_KEY: hoqOOE9stVgo_e!#
   ORCH_ACC_NAME: aswinsorganization
-  CLI_URL: https://uipath.pkgs.visualstudio.com/Public.Feeds/_packaging/UiPath-Official/
-nuget/v3/flat2/UiPath.CLI.Windows/22.10.8438.32859/UiPath.CLI.Windows.22.10.8438.32859.nupkg
+  CLI_URL: https://uipath.pkgs.visualstudio.com/Public.Feeds/_packaging/UiPath-Official/nuget/v3/flat2/UiPath.CLI.Windows/22.10.8438.32859/UiPath.CLI.Windows.22.10.8438.32859.nupkg
 
 jobs:
   print-details:
