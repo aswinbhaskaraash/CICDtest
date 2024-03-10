@@ -62,22 +62,18 @@ Param (
 
     #Required
     
-	[string] $project_path = "", # Required. Path to a project.json file or a folder containing project.json files.
+    [string] $project_path = "", # Required. Path to a project.json file or a folder containing project.json files.
     [string] $destination_folder = "", #Required. Destination folder.
     [string] $cli_url = "", #Required. UiPath CLI Url 
-	[string] $libraryOrchestratorUrl = "", #Required. The URL of the Orchestrator instance.
-	[string] $libraryOrchestratorTenant = "", #(Optional, useful only for libraries) The Orchestrator tenant.
+    [string] $libraryOrchestratorUrl = "", #Required. The URL of the Orchestrator instance.
+    [string] $libraryOrchestratorTenant = "", #(Optional, useful only for libraries) The Orchestrator tenant.
 
     #cloud - Required
     [string] $libraryOrchestratorAccountName = "", #(Optional, useful only for libraries) The Orchestrator URL.
-	[string] $libraryOrchestratorUserKey = "", #Required. The Orchestrator OAuth2 refresh token used for authentication. Must be used together with the account name and client id.
+    [string] $libraryOrchestratorUserKey = "", #Required. The Orchestrator OAuth2 refresh token used for authentication. Must be used together with the account name and client id.
     
-    #On prem - Required
-    [string] $libraryOrchestratorUsername = "", #Required. The Orchestrator username used for authentication. Must be used together with the password.
-	[string] $libraryOrchestratorPassword = "", #Required. The Orchestrator password used for authentication. Must be used together with the username.
-	
-	[string] $libraryOrchestratorFolder = "", #Optional, useful only for libraries) The Orchestrator folder (organization unit).
-	[string] $language = "", #The orchestrator language.  
+    [string] $libraryOrchestratorFolder = "", #Optional, useful only for libraries) The Orchestrator folder (organization unit).
+    [string] $language = "", #The orchestrator language.  
     [string] $version = "", #Package version.
     [switch] $autoVersion, #Auto-generate package version.
     [string] $outputType = "", #Force the output to a specific type.  
@@ -110,6 +106,7 @@ if (-not(Test-Path -Path $uipathCLI -PathType Leaf)) {
     try {
         New-Item -Path "$scriptPath" -ItemType "directory" -Name "uipathcli";
         Invoke-WebRequest $cli_url -OutFile "$scriptPath\\uipathcli\\cli.zip";
+	WriteLog "Invoke Web Request is Successful"
         Expand-Archive -LiteralPath "$scriptPath\\uipathcli\\cli.zip" -DestinationPath "$scriptPath\\uipathcli";
         WriteLog "UiPath CLI is downloaded and extracted in folder $scriptPath\\uipathcli"
         if (-not(Test-Path -Path $uipathCLI -PathType Leaf)) {
