@@ -140,12 +140,12 @@ if($folder_organization_unit -ne ""){
 }
 if($UserKey -ne ""){
     $ParamList.Add("-I")
-    $ParamList.Add($environment_list)
+    $ParamList.Add($UserKey)
 }
 
 if($UserSecret -ne ""){
     $ParamList.Add("-S")
-    $ParamList.Add($environment_list)
+    $ParamList.Add($UserSecret)
 }
 
 if($environment_list -ne ""){
@@ -161,6 +161,10 @@ if($language -ne ""){
 if($disableTelemetry -ne ""){
     $ParamList.Add("-y")
     $ParamList.Add($disableTelemetry)
+}
+if($applicationscope -ne ""){
+    $ParamList.Add("--applicationScope")
+    $ParamList.Add($applicationscope)
 }
 
 #mask sensitive info before logging 
